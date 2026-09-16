@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 780" width="450" height="780" fill="none">
+  <defs>
+    <!-- Sage/Mint Kurta Gradients -->
+    <linearGradient id="mintKurtaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#BFDDC6"/>
+      <stop offset="40%" stop-color="#A5CDB0"/>
+      <stop offset="100%" stop-color="#84AC90"/>
+    </linearGradient>
+    <linearGradient id="mintKurtaShadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8BB097"/>
+      <stop offset="100%" stop-color="#6F927B"/>
+    </linearGradient>
+
+    <!-- Kasavu Mundu Gradients -->
+    <linearGradient id="kasavuWhite" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#FAF8F3"/>
+      <stop offset="100%" stop-color="#ECE6D9"/>
+    </linearGradient>
+    <linearGradient id="goldKasavuZari" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FCEAB3"/>
+      <stop offset="35%" stop-color="#E5BE53"/>
+      <stop offset="70%" stop-color="#C5A039"/>
+      <stop offset="100%" stop-color="#8A6B1A"/>
+    </linearGradient>
+
+    <!-- Bride Dusty Pink / Blush Lehenga Gradients -->
+    <linearGradient id="pinkLehengaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F5BABA"/>
+      <stop offset="40%" stop-color="#EAA1A3"/>
+      <stop offset="80%" stop-color="#D98387"/>
+      <stop offset="100%" stop-color="#BE6B71"/>
+    </linearGradient>
+    <linearGradient id="pinkDupattaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8C4C6"/>
+      <stop offset="60%" stop-color="#E89B9E"/>
+      <stop offset="100%" stop-color="#CF787D"/>
+    </linearGradient>
+
+    <!-- Pure Cutout Drop Shadow -->
+    <filter id="cutoutDepth" x="-10%" y="-5%" width="120%" height="115%">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="#2C241E" flood-opacity="0.10"/>
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#C5A059" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+
+  <g filter="url(#cutoutDepth)">
+
+    <!-- ========================================== -->
+    <!-- 1. GROOM (ARAVIND - Left Side)            -->
+    <!-- ========================================== -->
+    <g id="groom-left">
+      <!-- Groom Feet / Shoes -->
+      <path d="M125 735 C125 725, 145 725, 165 730 C175 733, 178 740, 168 742 C150 746, 125 744, 125 735 Z" fill="#241B18"/>
+      <path d="M175 734 C175 725, 195 725, 212 729 C220 732, 222 739, 215 741 C198 745, 175 743, 175 734 Z" fill="#241B18"/>
+
+      <!-- Kerala Mundu (White Kasavu Dhoti) -->
+      <path d="M102 525 L215 510 L235 730 L98 732 Z" fill="url(#kasavuWhite)" stroke="#E0D6C3" stroke-width="0.8"/>
+      <!-- Vertical Pleats -->
+      <path d="M130 520 L126 730" stroke="#DDD4C0" stroke-width="1.2"/>
+      <path d="M152 516 L148 730" stroke="#DDD4C0" stroke-width="1"/>
+      <path d="M188 514 L185 730" stroke="#DDD4C0" stroke-width="1"/>
+      <!-- Kerala Gold Kasavu Border (Kara) - Rich Golden Zari band -->
+      <path d="M202 512 L218 510 L232 730 L216 730 Z" fill="url(#goldKasavuZari)"/>
+      <path d="M210 511 L224 730" stroke="#FFF7D6" stroke-width="1" stroke-dasharray="3 4"/>
+      <!-- Bottom Hem Gold Border -->
+      <path d="M98 720 L235 718 L235 730 L98 732 Z" fill="url(#goldKasavuZari)"/>
+
+      <!-- Mint/Sage Green Silk Kurta Body -->
+      <path d="M85 220 C105 208, 160 205, 210 216 C235 230, 242 270, 238 380 L232 530 C190 540, 130 542, 95 532 C82 460, 75 360, 85 220 Z" fill="url(#mintKurtaGrad)"/>
+      
+      <!-- Kurta Placket & Royal Neckline Embroidery -->
+      <path d="M142 210 C155 202, 172 202, 185 210 L178 350 C165 354, 150 354, 142 350 Z" fill="#93B99D" stroke="url(#goldKasavuZari)" stroke-width="2.5"/>
+      <!-- Gold Zari Intricate Motif on Placket -->
+      <path d="M161 212 L161 345" stroke="url(#goldKasavuZari)" stroke-width="3" stroke-linecap="round"/>
+      <path d="M155 225 L167 225 M154 245 L168 245 M154 265 L168 265 M155 285 L167 285 M156 305 L166 305 M157 325 L165 325" stroke="#FEE89D" stroke-width="1.8"/>
+      <!-- Buttons -->
+      <circle cx="161" cy="235" r="2.4" fill="#8A6B1A" stroke="#FFF0A8" stroke-width="0.8"/>
+      <circle cx="161" cy="255" r="2.4" fill="#8A6B1A" stroke="#FFF0A8" stroke-width="0.8"/>
+      <circle cx="161" cy="275" r="2.4" fill="#8A6B1A" stroke="#FFF0A8" stroke-width="0.8"/>
+      <circle cx="161" cy="295" r="2.4" fill="#8A6B1A" stroke="#FFF0A8" stroke-width="0.8"/>
+
+      <!-- Left Sleeve & Relaxed Arm -->
+      <path d="M85 220 C68 240, 60 290, 62 360 C65 385, 80 440, 88 475 L112 468 C105 430, 95 380, 92 340 C90 280, 98 240, 105 224 Z" fill="url(#mintKurtaShadow)"/>
+      <!-- Sleeve Cuffs -->
+      <path d="M88 468 L112 461" stroke="url(#goldKasavuZari)" stroke-width="3"/>
+      <!-- Groom Left Hand -->
+      <path d="M88 475 C85 500, 98 528, 110 522 C116 515, 118 495, 112 468 Z" fill="#DDB297"/>
+
+      <!-- Groom Neck -->
+      <path d="M148 165 L148 212 L178 212 L178 165 Z" fill="#D3A588"/>
+      
+      <!-- Groom Head, Face, Beard & Expression -->
+      <path d="M142 140 C142 180, 162 198, 185 192 C202 186, 208 168, 206 142 C204 122, 192 110, 172 110 C150 110, 142 122, 142 140 Z" fill="#E8BFA8"/>
+      <!-- Groom Groomed Dark Beard & Mustache -->
+      <path d="M145 148 C144 178, 162 196, 184 190 C198 184, 202 170, 202 155 C198 155, 190 168, 178 172 C165 174, 155 168, 150 152 Z" fill="#201815"/>
+      <path d="M165 158 Q178 152, 192 160 Q180 166, 165 158 Z" fill="#201815"/> <!-- Mustache -->
+      <!-- Smiling Eyes (Looking Right towards Shruti) -->
+      <path d="M168 142 Q176 138, 184 142" stroke="#201815" stroke-width="2.2" stroke-linecap="round"/>
+      <ellipse cx="178" cy="146" rx="2.8" ry="2.2" fill="#201815"/>
+      <circle cx="179" cy="145" r="0.8" fill="#FFFFFF"/>
+      <path d="M167 135 Q176 131, 185 135" stroke="#201815" stroke-width="2" stroke-linecap="round"/>
+      <!-- Warm Smile -->
+      <path d="M174 165 Q184 172, 192 165" stroke="#B05B5B" stroke-width="2.2" stroke-linecap="round" fill="#FAF7F2"/>
+
+      <!-- Groom Dark Trimmed Hair -->
+      <path d="M142 135 C138 108, 150 92, 178 92 C202 92, 212 108, 210 135 C198 122, 186 118, 165 120 C150 120, 144 128, 142 135 Z" fill="#201815"/>
+      <!-- Ear -->
+      <ellipse cx="143" cy="150" rx="4" ry="7" fill="#E0B097"/>
+    </g>
+
+    <!-- ========================================== -->
+    <!-- 2. BRIDE (SHRUTI - Right Side)            -->
+    <!-- ========================================== -->
+    <g id="bride-right">
+      <!-- Flared Dusty Rose Lehenga Skirt -->
+      <path d="M225 390 C220 500, 190 640, 170 735 C230 755, 340 755, 410 725 C400 630, 365 480, 340 390 Z" fill="url(#pinkLehengaGrad)"/>
+      
+      <!-- Intricate Antique Gold Zari Patterns on Skirt -->
+      <!-- Broad Bottom Zari Border -->
+      <path d="M170 710 C230 735, 340 735, 410 705 L410 730 C340 760, 230 760, 170 735 Z" fill="url(#goldKasavuZari)"/>
+      <path d="M175 690 C235 715, 335 715, 405 685" stroke="url(#goldKasavuZari)" stroke-width="3"/>
+      <!-- Vertical Saree/Lehenga Pleats with Golden Embroidery Motifs -->
+      <g stroke="url(#goldKasavuZari)" stroke-width="1.6" opacity="0.9">
+        <path d="M245 410 C240 500, 232 600, 225 725"/>
+        <path d="M275 410 C275 510, 280 610, 285 735"/>
+        <path d="M305 410 C310 510, 325 610, 340 725"/>
+        <path d="M328 410 C340 500, 365 600, 380 710"/>
+      </g>
+      <!-- Gold Zari Paisleys / Buttas across Lehenga -->
+      <g fill="url(#goldKasavuZari)" opacity="0.85">
+        <circle cx="230" cy="580" r="3.5"/><circle cx="260" cy="620" r="4"/><circle cx="300" cy="630" r="4.2"/><circle cx="340" cy="610" r="4"/><circle cx="370" cy="580" r="3.5"/>
+        <circle cx="240" cy="500" r="3"/><circle cx="280" cy="520" r="3.5"/><circle cx="320" cy="520" r="3.5"/><circle cx="350" cy="490" r="3"/>
+        <circle cx="250" cy="670" r="4"/><circle cx="295" cy="685" r="4.5"/><circle cx="340" cy="675" r="4"/>
+      </g>
+
+      <!-- Draped Embroidered Dupatta & Blouse -->
+      <!-- Blouse (Dusty Rose with Gold Work) -->
+      <path d="M238 290 C240 250, 310 245, 345 280 C360 320, 355 365, 340 395 C305 405, 255 405, 238 385 Z" fill="url(#pinkDupattaGrad)"/>
+      <!-- Dupatta Draped Across Shoulder -->
+      <path d="M240 310 C260 360, 290 550, 350 640 C375 620, 395 560, 388 470 C382 390, 355 310, 335 275 C310 270, 270 280, 240 310 Z" fill="url(#pinkDupattaGrad)" stroke="url(#goldKasavuZari)" stroke-width="2.5"/>
+      <!-- Dupatta Gold Zari Embroidered Border -->
+      <path d="M240 310 C260 370, 285 540, 345 640" stroke="url(#goldKasavuZari)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M240 310 C260 370, 285 540, 345 640" stroke="#FFF1B8" stroke-width="1.8" stroke-dasharray="3 4"/>
+
+      <!-- Bride Arms, Hands & Gold Bangles (Vala) gently folded at waist -->
+      <!-- Right Arm and Wrist -->
+      <path d="M335 285 C358 310, 365 370, 350 420 L325 425 C335 375, 332 325, 320 295 Z" fill="#D69B9E"/>
+      <path d="M345 360 L330 364" stroke="url(#goldKasavuZari)" stroke-width="3"/> <!-- Sleeve Zari -->
+      <!-- Forearms folded in front -->
+      <path d="M245 378 C255 368, 295 368, 320 375 L315 395 C290 388, 255 390, 245 398 Z" fill="#E8BFA8"/>
+      <!-- Gold Bangles Stack (Kadas & Chooda) -->
+      <g stroke="url(#goldKasavuZari)" stroke-width="2.5">
+        <path d="M260 372 L260 392"/>
+        <path d="M264 372 L264 392"/>
+        <path d="M268 372 L268 392"/>
+        <path d="M300 372 L300 392"/>
+        <path d="M304 372 L304 392"/>
+        <path d="M308 372 L308 392"/>
+      </g>
+
+      <!-- Bride Graceful Neck & Bridal Gold Jewelry -->
+      <path d="M272 205 L272 250 L298 250 L298 205 Z" fill="#DEB097"/>
+      <!-- Choker Necklace (Attigai) -->
+      <path d="M270 232 Q285 242, 300 232" stroke="url(#goldKasavuZari)" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M270 232 Q285 242, 300 232" stroke="#FFF7D6" stroke-width="1.5" stroke-dasharray="2 3"/>
+      <!-- Long Haar / Mala with Pendant -->
+      <path d="M266 242 Q285 260, 304 242" stroke="url(#goldKasavuZari)" stroke-width="2.8"/>
+      <circle cx="285" cy="261" r="3.2" fill="#D4AF37" stroke="#8A6B1A" stroke-width="1"/>
+
+      <!-- Bride Radiant Face, Glowing Smile (Looking Left towards Aravind) -->
+      <path d="M262 152 C262 188, 278 206, 298 202 C314 198, 318 180, 316 154 C314 132, 302 120, 285 120 C270 120, 262 132, 262 152 Z" fill="#ECC3AD"/>
+      
+      <!-- Bindi / Pottu -->
+      <circle cx="277" cy="150" r="2.2" fill="#B32424"/>
+      
+      <!-- Bride Expressive Eyes looking tenderly at Aravind -->
+      <path d="M268 152 Q275 147, 283 152" stroke="#201815" stroke-width="2" stroke-linecap="round"/>
+      <ellipse cx="274" cy="155" rx="3" ry="2.2" fill="#201815"/>
+      <circle cx="273" cy="154" r="0.9" fill="#FFFFFF"/>
+      <!-- Eye Lash & Brow -->
+      <path d="M266 145 Q275 140, 285 146" stroke="#201815" stroke-width="2.2" stroke-linecap="round"/>
+      
+      <!-- Radiant Smile -->
+      <path d="M270 174 Q280 182, 290 175" stroke="#C45A5A" stroke-width="2.4" stroke-linecap="round" fill="#FAF7F2"/>
+
+      <!-- Gold Jhumka Earrings -->
+      <circle cx="308" cy="168" r="2.2" fill="#D4AF37"/>
+      <path d="M304 172 L312 172 L308 180 Z" fill="url(#goldKasavuZari)" stroke="#8A6B1A" stroke-width="0.8"/>
+      <circle cx="308" cy="182" r="1.5" fill="#FAF7F2"/>
+
+      <!-- Traditional Maang Tikka (Nethi Chutti) -->
+      <path d="M285 116 L278 140" stroke="url(#goldKasavuZari)" stroke-width="1.8"/>
+      <circle cx="277" cy="142" r="2.6" fill="#D4AF37" stroke="#9E7B34" stroke-width="0.8"/>
+
+      <!-- Gorgeous Wavy Dark Hair Cascading with Jasmine Flowers -->
+      <path d="M265 140 C265 115, 280 102, 302 104 C325 106, 335 125, 330 155 C325 175, 320 220, 325 280 C310 270, 305 240, 310 200 C310 160, 312 140, 300 132 C288 126, 272 130, 265 140 Z" fill="#201815"/>
+      <!-- Soft Curls Cascading Behind Back & Shoulder -->
+      <path d="M325 150 C340 190, 345 250, 338 310 C330 312, 325 300, 328 270 C330 230, 324 180, 318 150 Z" fill="#181210"/>
+      <!-- Fragrant White Jasmine (Mulla Poo) Hair Accents -->
+      <g fill="#FFFFF2" stroke="#E5D99B" stroke-width="0.6">
+        <circle cx="316" cy="142" r="3.2"/><circle cx="321" cy="148" r="3.4"/><circle cx="324" cy="156" r="3.4"/>
+        <circle cx="325" cy="165" r="3.2"/><circle cx="324" cy="175" r="3"/><circle cx="322" cy="186" r="3"/>
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Soft Ground Ambient Shadow (Cutout sits organically on page) -->
+  <ellipse cx="225" cy="745" rx="150" ry="14" fill="#2C241E" opacity="0.14"/>
+  <ellipse cx="225" cy="746" rx="90" ry="7" fill="#2C241E" opacity="0.18"/>
+</svg>

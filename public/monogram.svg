@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="160" height="160" fill="none">
+  <!-- Delicate floral wreath with blush roses & sage leaves -->
+  <circle cx="80" cy="80" r="70" stroke="#C5A059" stroke-width="1.2" stroke-opacity="0.3" stroke-dasharray="3 4"/>
+  <circle cx="80" cy="80" r="66" stroke="#C5A059" stroke-width="0.8" stroke-opacity="0.5"/>
+
+  <!-- Sage green leaves and rosebuds around wreath -->
+  <g fill="#7E9F88" fill-opacity="0.8">
+    <!-- Top-left rosebuds & leaves -->
+    <path d="M42 45 C38 40, 36 34, 40 32 C44 30, 48 36, 45 42 Z" />
+    <path d="M34 50 C28 48, 25 42, 28 38 C32 36, 36 42, 36 48 Z" />
+    <!-- Bottom-right rosebuds & leaves -->
+    <path d="M118 115 C122 120, 124 126, 120 128 C116 130, 112 124, 115 118 Z" />
+    <path d="M126 110 C132 112, 135 118, 132 122 C128 124, 124 118, 124 112 Z" />
+  </g>
+
+  <!-- Blush pink roses -->
+  <g fill="#D48B8B">
+    <!-- Top left rose -->
+    <circle cx="48" cy="38" r="7" fill="#E8A5A5" />
+    <circle cx="48" cy="38" r="4" fill="#C76E7E" />
+    <circle cx="36" cy="48" r="5" fill="#E8A5A5" />
+    <!-- Bottom right rose -->
+    <circle cx="112" cy="122" r="7" fill="#E8A5A5" />
+    <circle cx="112" cy="122" r="4" fill="#C76E7E" />
+    <circle cx="124" cy="112" r="5" fill="#E8A5A5" />
+  </g>
+
+  <!-- Stylized Elegant Letters 'A' and 'S' in Antique Gold & Rose -->
+  <!-- Letter A (Sage & Gold) -->
+  <path d="M64 108 L78 50 Q81 44 86 50 L100 108 M69 92 L95 92" stroke="#7E9F88" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.65"/>
+  
+  <!-- Letter S intertwining through A (Blush Rose & Gold) -->
+  <path d="M98 62 C96 52, 82 46, 73 52 C62 59, 64 72, 79 78 C96 84, 98 96, 88 106 C77 114, 62 108, 58 98" 
+        stroke="#D48B8B" stroke-width="4" stroke-linecap="round" fill="none" opacity="0.95"/>
+  
+  <!-- Subtle gold highlights -->
+  <path d="M78 50 Q81 44 86 50" stroke="#C5A059" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+  <circle cx="80" cy="80" r="1.5" fill="#C5A059" />
+</svg>

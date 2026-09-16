@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 32" width="320" height="32" fill="none">
+  <!-- Traditional Kerala Kasavu & Lotus Ornamental Divider -->
+  <path d="M10 16 L120 16" stroke="#C5A059" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  <path d="M200 16 L310 16" stroke="#C5A059" stroke-width="1" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- Left flourish -->
+  <path d="M105 16 C115 10, 125 22, 135 16" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+  <!-- Right flourish -->
+  <path d="M215 16 C205 10, 195 22, 185 16" stroke="#C5A059" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+
+  <!-- Center Kerala Lotus Flower Motif -->
+  <g transform="translate(160, 16)">
+    <!-- Central lotus petal -->
+    <path d="M0 -11 C-4 -6, -4 0, 0 4 C4 0, 4 -6, 0 -11 Z" fill="#D48B8B" stroke="#C5A059" stroke-width="0.8"/>
+    <!-- Left petals -->
+    <path d="M-2 -8 C-8 -4, -9 2, -4 5 C-1 4, -2 -2, -2 -8 Z" fill="#E8A5A5" stroke="#C5A059" stroke-width="0.8"/>
+    <path d="M-4 -3 C-12 1, -12 8, -6 8 C-3 7, -3 2, -4 -3 Z" fill="#F4C7C7" stroke="#C5A059" stroke-width="0.8"/>
+    <!-- Right petals -->
+    <path d="M2 -8 C8 -4, 9 2, 4 5 C1 4, 2 -2, 2 -8 Z" fill="#E8A5A5" stroke="#C5A059" stroke-width="0.8"/>
+    <path d="M4 -3 C12 1, 12 8, 6 8 C3 7, 3 2, 4 -3 Z" fill="#F4C7C7" stroke="#C5A059" stroke-width="0.8"/>
+    <!-- Bottom leaves / Kasavu gold base -->
+    <path d="M-10 8 Q0 12 10 8 Q0 6 -10 8 Z" fill="#7E9F88" stroke="#C5A059" stroke-width="0.7"/>
+    <!-- Center seed pearl -->
+    <circle cx="0" cy="1" r="1.5" fill="#D4AF37"/>
+  </g>
+  
+  <!-- Accent dots -->
+  <circle cx="12" cy="16" r="2" fill="#C5A059"/>
+  <circle cx="308" cy="16" r="2" fill="#C5A059"/>
+</svg>

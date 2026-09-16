@@ -1,0 +1,6 @@
+{
+  "name": "Aravind & Shruti Wedding Invitation",
+  "description": "Traditional yet modern Kerala wedding invitation for Aravind & Shruti with live countdown, event details, Google Maps, Add to Calendar, and RSVP.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

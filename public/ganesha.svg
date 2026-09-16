@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" fill="none">
+  <!-- Sacred Ganesha motif with traditional South Indian / Kerala gold linework -->
+  <g stroke="#C5A059" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Crown / Kirita -->
+    <path d="M60 14 L52 28 L68 28 Z" fill="#C5A059" fill-opacity="0.15"/>
+    <path d="M46 28 C54 25, 66 25, 74 28" />
+    <path d="M50 22 L70 22" />
+    <circle cx="60" cy="11" r="2.5" fill="#C5A059"/>
+
+    <!-- Forehead & Tilak / Chandana Kuri with Kumkum -->
+    <path d="M50 35 C56 34, 64 34, 70 35" stroke-width="1.8"/>
+    <path d="M52 40 C57 39, 63 39, 68 40" stroke-width="1.5"/>
+    <circle cx="60" cy="34" r="2.2" fill="#D48B8B" stroke="#D48B8B"/>
+
+    <!-- Left Ear (Large traditional elephant ear) -->
+    <path d="M46 32 C32 30, 24 42, 28 58 C31 66, 38 68, 44 64" stroke-width="2"/>
+    <path d="M35 38 C31 46, 31 54, 38 60" stroke-width="1.2" stroke-dasharray="2 3"/>
+
+    <!-- Right Ear (with modak / blessing hand side) -->
+    <path d="M74 32 C88 30, 96 42, 92 58 C89 66, 82 68, 76 64" stroke-width="2"/>
+    <path d="M85 38 C89 46, 89 54, 82 60" stroke-width="1.2" stroke-dasharray="2 3"/>
+
+    <!-- Eyes and brow -->
+    <path d="M48 45 Q53 43 57 46" stroke-width="2"/>
+    <circle cx="53" cy="48" r="1.4" fill="#2C241E" stroke="none"/>
+    <path d="M63 46 Q67 43 72 45" stroke-width="2"/>
+    <circle cx="67" cy="48" r="1.4" fill="#2C241E" stroke="none"/>
+
+    <!-- Trunk curving gracefully to the left with modak / sweet (traditional valampiri / idampiri) -->
+    <path d="M57 48 C56 58, 54 68, 52 76 C50 84, 42 90, 36 86 C31 82, 33 74, 40 73 C44 72, 47 75, 45 78" stroke-width="2.4" fill="none"/>
+    
+    <!-- Tusk: Left intact, Right tusk -->
+    <path d="M68 62 L74 65" stroke-width="2.5"/>
+    
+    <!-- Modak in trunk / Lotus base -->
+    <circle cx="43" cy="76" r="3.5" fill="#D4AF37" stroke="#C5A059"/>
+    
+    <!-- Bottom lotus petals / base -->
+    <path d="M42 96 C48 91, 72 91, 78 96" stroke-width="1.5"/>
+    <path d="M36 102 C44 97, 76 97, 84 102" stroke-width="1.2"/>
+    <path d="M60 88 L60 98" stroke-width="1.5"/>
+    <circle cx="60" cy="104" r="1.8" fill="#C5A059"/>
+  </g>
+</svg>
