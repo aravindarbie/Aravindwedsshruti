@@ -105,54 +105,56 @@ export default function App() {
           const w = canvas.width;
           const h = canvas.height;
 
-          // BFS flood-fill starting from all 4 exterior boundaries
-          // Detects faux checkerboard (alternating white/gray squares) or solid white/light background
-          const visited = new Uint8Array(w * h);
-          const queue: number[] = [];
-
-          const isBackgroundPixel = (idx: number) => {
+          // Detects faux checkerboard (alternating white/gray squares #FFFFFF & #CCCCCC)
+          // Achromatic neutral squares have almost zero color difference between R, G, and B.
+          const isNeutralCheckerPixel = (idx: number) => {
             const r = data[idx];
             const g = data[idx + 1];
             const b = data[idx + 2];
             const a = data[idx + 3];
             if (a === 0) return true;
-            // Achromatic high-brightness checkerboard (pure white or neutral light gray)
             const maxDiff = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
             const avg = (r + g + b) / 3;
-            return avg > 175 && maxDiff <= 20;
+            // The mundu is warm cream (b is lower than r by >15). Checkerboard is neutral (maxDiff <= 14).
+            return avg > 175 && maxDiff <= 14;
           };
 
+          const visited = new Uint8Array(w * h);
+          const queue: number[] = [];
+
+          // 1. Seed exterior borders
           for (let x = 0; x < w; x++) {
             const topIdx = (0 * w + x) * 4;
-            if (isBackgroundPixel(topIdx)) {
+            if (isNeutralCheckerPixel(topIdx)) {
               queue.push(x, 0);
               visited[0 * w + x] = 1;
             }
             const bottomIdx = ((h - 1) * w + x) * 4;
-            if (isBackgroundPixel(bottomIdx)) {
+            if (isNeutralCheckerPixel(bottomIdx)) {
               queue.push(x, h - 1);
               visited[(h - 1) * w + x] = 1;
             }
           }
           for (let y = 0; y < h; y++) {
             const leftIdx = (y * w + 0) * 4;
-            if (isBackgroundPixel(leftIdx) && !visited[y * w + 0]) {
+            if (isNeutralCheckerPixel(leftIdx) && !visited[y * w + 0]) {
               queue.push(0, y);
               visited[y * w + 0] = 1;
             }
             const rightIdx = (y * w + (w - 1)) * 4;
-            if (isBackgroundPixel(rightIdx) && !visited[y * w + (w - 1)]) {
+            if (isNeutralCheckerPixel(rightIdx) && !visited[y * w + (w - 1)]) {
               queue.push(w - 1, y);
               visited[y * w + (w - 1)] = 1;
             }
           }
 
+          // 2. BFS flood fill from edges
           let head = 0;
           while (head < queue.length) {
             const cx = queue[head++];
             const cy = queue[head++];
             const pIdx = (cy * w + cx) * 4;
-            data[pIdx + 3] = 0; // Set to completely transparent
+            data[pIdx + 3] = 0; // Clear to transparent
 
             const neighbors = [
               [cx + 1, cy],
@@ -167,9 +169,29 @@ export default function App() {
                 const nPos = ny * w + nx;
                 if (!visited[nPos]) {
                   visited[nPos] = 1;
-                  if (isBackgroundPixel(nPos * 4)) {
+                  if (isNeutralCheckerPixel(nPos * 4)) {
                     queue.push(nx, ny);
                   }
+                }
+              }
+            }
+          }
+
+          // 3. Clear enclosed interior pockets of checkerboard (e.g. between arm & torso)
+          // Look for neutral gray squares (rgb ~ 204) or pure white (255) in 8x8 or 16x16 blocks
+          for (let y = 0; y < h; y++) {
+            for (let x = 0; x < w; x++) {
+              const pos = y * w + x;
+              const pIdx = pos * 4;
+              if (data[pIdx + 3] > 0 && isNeutralCheckerPixel(pIdx)) {
+                // Check if neighboring pixels are also neutral checkerboard (confirming it's not a thin highlight)
+                const r = data[pIdx];
+                const g = data[pIdx + 1];
+                const b = data[pIdx + 2];
+                const maxDiff = Math.max(Math.abs(r - g), Math.abs(g - b), Math.abs(r - b));
+                const avg = (r + g + b) / 3;
+                if (maxDiff <= 8 && (avg > 250 || (avg > 195 && avg < 215))) {
+                  data[pIdx + 3] = 0;
                 }
               }
             }
@@ -186,24 +208,48 @@ export default function App() {
     });
   };
 
+  const applyPhotoFile = (file: File) => {
+    const reader = new FileReader();
+    reader.onload = async (event) => {
+      const result = event.target?.result as string;
+      const cutoutResult = await processAndRemoveBackground(result);
+      setCustomPhoto(cutoutResult);
+      try {
+        localStorage.setItem('wedding_couple_photo', cutoutResult);
+      } catch {
+        // ignore quota
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = async (event) => {
-        const result = event.target?.result as string;
-        // Automatically remove any faux-checkerboard or light background
-        const cutoutResult = await processAndRemoveBackground(result);
-        setCustomPhoto(cutoutResult);
-        try {
-          localStorage.setItem('wedding_couple_photo', cutoutResult);
-        } catch {
-          // ignore quota error
-        }
-      };
-      reader.readAsDataURL(file);
-    }
+    if (file) applyPhotoFile(file);
   };
+
+  // Support drag-and-drop & clipboard paste anywhere on page
+  const [isDraggingPhoto, setIsDraggingPhoto] = useState(false);
+
+  useEffect(() => {
+    const handlePaste = (e: ClipboardEvent) => {
+      const items = e.clipboardData?.items;
+      if (items) {
+        for (let i = 0; i < items.length; i++) {
+          if (items[i].type.indexOf('image') !== -1) {
+            const blob = items[i].getAsFile();
+            if (blob) {
+              applyPhotoFile(blob);
+              break;
+            }
+          }
+        }
+      }
+    };
+
+    window.addEventListener('paste', handlePaste);
+    return () => window.removeEventListener('paste', handlePaste);
+  }, []);
 
   // Peaceful Traditional Wedding Raga Melody (Web Audio API Synthesizer)
   // Uses Mohanam/Kalyani pentatonic auspicious wedding raga scales
@@ -478,12 +524,27 @@ export default function App() {
           </div>
 
           {/* ==================== COUPLE CUTOUT PORTRAIT (NO RECTANGULAR BOX) ==================== */}
-          <div className="relative mx-auto max-w-md px-2 my-6 flex flex-col items-center">
+          <div 
+            className={`relative mx-auto max-w-md px-2 my-6 flex flex-col items-center transition-all ${
+              isDraggingPhoto ? 'scale-105 ring-2 ring-[#7E9F88] rounded-3xl bg-[#7E9F88]/10 p-4' : ''
+            }`}
+            onDragOver={(e) => {
+              e.preventDefault();
+              setIsDraggingPhoto(true);
+            }}
+            onDragLeave={() => setIsDraggingPhoto(false)}
+            onDrop={(e) => {
+              e.preventDefault();
+              setIsDraggingPhoto(false);
+              const file = e.dataTransfer.files?.[0];
+              if (file) applyPhotoFile(file);
+            }}
+          >
             {/* Ambient warm radial halo behind cutout */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 h-72 sm:w-88 sm:h-88 rounded-full bg-gradient-to-tr from-[#D4AF37]/15 via-[#FAF5ED]/20 to-[#E8A5A5]/15 blur-2xl pointer-events-none -z-10" />
 
             {/* Cutout Couple Image - Floating seamlessly on page */}
-            <div className="relative w-full flex flex-col items-center justify-center">
+            <div className="relative w-full flex flex-col items-center justify-center group">
               <img 
                 src={customPhoto || "/couple.svg"} 
                 alt="Aravind and Shruti - Cutout Portrait" 
@@ -498,43 +559,55 @@ export default function App() {
               <div className="absolute top-0 right-4 sm:right-8 bg-white/90 backdrop-blur-sm p-1.5 rounded-full border border-[#C5A059]/30 shadow-sm">
                 <img src="/monogram.svg" alt="A & S Logo" className="w-7 h-7" />
               </div>
+
+              {isDraggingPhoto && (
+                <div className="absolute inset-0 flex items-center justify-center bg-white/80 backdrop-blur-xs rounded-2xl border-2 border-dashed border-[#7E9F88] text-center p-4">
+                  <p className="text-sm font-semibold text-[#3D5A46]">Drop photo here to remove checkerboard and apply cutout</p>
+                </div>
+              )}
             </div>
 
-            {/* Photo Caption & Seamless Upload Option */}
-            <div className="mt-4 flex items-center justify-between w-full max-w-[340px] px-2 text-xs">
-              <span className="font-serif-cormorant italic text-[#6B5A4E]">
-                {customPhoto ? 'Custom Cutout Photo Active' : 'Aravind & Shruti • Kerala Wedding'}
-              </span>
+            {/* Photo Action Bar: Upload, Paste, Drag & Drop */}
+            <div className="mt-4 flex flex-col items-center w-full max-w-[360px] px-2 text-xs space-y-1.5">
+              <div className="flex items-center justify-between w-full">
+                <span className="font-serif-cormorant italic text-[#6B5A4E]">
+                  {customPhoto ? '✓ Custom Cutout Photo Active' : 'Aravind & Shruti • Kerala Wedding'}
+                </span>
 
-              <div className="flex items-center space-x-2">
-                {customPhoto && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setCustomPhoto(null);
-                      try {
-                        localStorage.removeItem('wedding_couple_photo');
-                      } catch {
-                        // ignore
-                      }
-                    }}
-                    className="text-[11px] text-[#A63A3A] hover:text-[#7A1E1E] underline cursor-pointer font-medium"
-                    title="Reset to default handcrafted Kerala illustration"
-                  >
-                    Reset
-                  </button>
-                )}
+                <div className="flex items-center space-x-2">
+                  {customPhoto && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setCustomPhoto(null);
+                        try {
+                          localStorage.removeItem('wedding_couple_photo');
+                        } catch {
+                          // ignore
+                        }
+                      }}
+                      className="text-[11px] text-[#A63A3A] hover:text-[#7A1E1E] underline cursor-pointer font-medium"
+                      title="Reset to default handcrafted Kerala illustration"
+                    >
+                      Reset
+                    </button>
+                  )}
 
-                <label className="font-medium text-[#7E9F88] hover:text-[#5C7C66] cursor-pointer flex items-center space-x-1 bg-white/80 px-2.5 py-1 rounded-full border border-[#C5A059]/30 shadow-xs hover:bg-[#FAF7F2] transition">
-                  <span>{customPhoto ? 'Change Photo' : 'Upload / Change Photo'}</span>
-                  <input 
-                    type="file" 
-                    accept="image/*" 
-                    onChange={handlePhotoUpload} 
-                    className="hidden" 
-                  />
-                </label>
+                  <label className="font-medium text-[#7E9F88] hover:text-[#5C7C66] cursor-pointer flex items-center space-x-1.5 bg-white/90 px-3 py-1.5 rounded-full border border-[#C5A059]/40 shadow-xs hover:bg-[#FAF7F2] transition">
+                    <span className="text-xs font-semibold">{customPhoto ? 'Replace Photo' : 'Use Uploaded Photo'}</span>
+                    <input 
+                      type="file" 
+                      accept="image/*" 
+                      onChange={handlePhotoUpload} 
+                      className="hidden" 
+                    />
+                  </label>
+                </div>
               </div>
+
+              <p className="text-[11px] text-[#8C7A6B] text-center">
+                Tip: Click above to select your downloaded <span className="font-mono text-[10px] bg-[#EDE6DC] px-1 py-0.5 rounded">.png</span>, or drag &amp; drop / paste (Ctrl+V) directly.
+              </p>
             </div>
           </div>
 
