@@ -503,18 +503,38 @@ export default function App() {
             {/* Photo Caption & Seamless Upload Option */}
             <div className="mt-4 flex items-center justify-between w-full max-w-[340px] px-2 text-xs">
               <span className="font-serif-cormorant italic text-[#6B5A4E]">
-                Aravind &amp; Shruti • Kerala Wedding
+                {customPhoto ? 'Custom Cutout Photo Active' : 'Aravind & Shruti • Kerala Wedding'}
               </span>
 
-              <label className="font-medium text-[#7E9F88] hover:text-[#5C7C66] cursor-pointer flex items-center space-x-1 bg-white/80 px-2.5 py-1 rounded-full border border-[#C5A059]/30 shadow-xs hover:bg-[#FAF7F2] transition">
-                <span>Upload / Change Photo</span>
-                <input 
-                  type="file" 
-                  accept="image/*" 
-                  onChange={handlePhotoUpload} 
-                  className="hidden" 
-                />
-              </label>
+              <div className="flex items-center space-x-2">
+                {customPhoto && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setCustomPhoto(null);
+                      try {
+                        localStorage.removeItem('wedding_couple_photo');
+                      } catch {
+                        // ignore
+                      }
+                    }}
+                    className="text-[11px] text-[#A63A3A] hover:text-[#7A1E1E] underline cursor-pointer font-medium"
+                    title="Reset to default handcrafted Kerala illustration"
+                  >
+                    Reset
+                  </button>
+                )}
+
+                <label className="font-medium text-[#7E9F88] hover:text-[#5C7C66] cursor-pointer flex items-center space-x-1 bg-white/80 px-2.5 py-1 rounded-full border border-[#C5A059]/30 shadow-xs hover:bg-[#FAF7F2] transition">
+                  <span>{customPhoto ? 'Change Photo' : 'Upload / Change Photo'}</span>
+                  <input 
+                    type="file" 
+                    accept="image/*" 
+                    onChange={handlePhotoUpload} 
+                    className="hidden" 
+                  />
+                </label>
+              </div>
             </div>
           </div>
 

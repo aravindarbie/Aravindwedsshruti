@@ -463,6 +463,15 @@
         }
       }
     }
+
+    // Sync couple photo if custom photo was uploaded in browser
+    try {
+      const savedPhoto = localStorage.getItem('wedding_couple_photo');
+      if (savedPhoto) {
+        const img = document.getElementById('coupleImg');
+        if (img) img.src = savedPhoto;
+      }
+    } catch(e) {}
   </script>
 </body>
 </html>
